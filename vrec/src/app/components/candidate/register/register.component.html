@@ -1,0 +1,41 @@
+
+
+<app-header></app-header>
+
+<div class="container" >
+    <h2>User registration</h2>
+    <form #Registration="ngForm" (ngSubmit)="registerUser()">
+     
+      <small class="text-danger">{{msg}}</small>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control"  placeholder="Enter email" name="email" [(ngModel)]="user.emailId" required #email="ngModel"
+        [class.is-invalid]="email.invalid && email.touched" >
+        <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email Id is required field</small>
+      </div>
+      <div class="form-group">
+        <label for="name">Username:</label>
+        <input type="name" class="form-control"  placeholder="Enter username" name="name" [(ngModel)]="user.name" required #name="ngModel"
+        [class.is-invalid]="name.invalid && name.touched" >
+        <small class="text-danger" [class.d-none]="name.valid || name.untouched">username is required field</small>
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control"  placeholder="Enter password" name="password" [(ngModel)]="user.password" required  #password="ngModel"
+        [class.is-invalid]="password.invalid && password.touched" >
+        <small class="text-danger" [class.d-none]="password.valid || password.untouched">password is required field</small>
+    
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="phone" class="form-control"  placeholder="Enter phone number" name="phone" [(ngModel)]="user.phone" required  #phone="ngModel"
+        [class.is-invalid]="phone.invalid && phone.touched" >
+        <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">phone number is required field</small>
+    
+      </div>
+     
+      <button type="submit" class="btn btn-info">Register</button>
+    </form>
+      
+  </div>
+ 
