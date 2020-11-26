@@ -23,32 +23,30 @@ public class User {
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "id")
-	    private int id;
+	    private Long id;
 	 
 	 private String username;
 	
 	  private String password;
+	  
 	  @DateTimeFormat(pattern = "dd/MM/yyyy")
 	  @Temporal(value=TemporalType.DATE)
-
 	  private Date dob;
 	
 	  private String email;
 	  private String phone;
 	  
-	  @OneToOne(mappedBy="user",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-		@JoinColumn(name = "jid")
-  	private JobProcessDetails jobprocessdetails;
+	  
 	 
 	  public String getUsername() {
 	    return username;
 	  }
 
-	  public int getId() {
+	  public Long getId() {
 	        return id;
 	    }
 
-	    public void setId(int id) {
+	    public void setId(Long id) {
 	        this.id = id;
 	    }
 
@@ -90,13 +88,7 @@ public class User {
 		  }
 		  
 		  
-		  public JobProcessDetails getJobProcessDetails() {
-		        return jobprocessdetails;
-		    }
 		 
-		    public void setJobProcessDetails(JobProcessDetails jobprocessdetails) {
-		        this.jobprocessdetails = jobprocessdetails;
-		    }
 		  
 		  
 	  @Override

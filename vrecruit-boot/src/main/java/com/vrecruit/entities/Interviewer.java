@@ -1,10 +1,8 @@
 package com.vrecruit.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +13,7 @@ public class Interviewer {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	private String name;
 	
@@ -27,14 +25,13 @@ public class Interviewer {
 	
 	private int phone;
 	
-	@OneToMany(mappedBy = "interviewer",fetch = FetchType.EAGER)
-	private  List<JobApplication> jobApplication=new ArrayList<>();
+	
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -78,14 +75,7 @@ public class Interviewer {
 		this.phone = phone;
 	}
 
-	public List<JobApplication> getjobApplication() {
-		return jobApplication;
-	}
-
-	public void setjobApplication(List<JobApplication> jobApplication) {
-		this.jobApplication = jobApplication;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Interviewer [id=" + id + ", name=" + name + ", password=" + password + ", email=" + email

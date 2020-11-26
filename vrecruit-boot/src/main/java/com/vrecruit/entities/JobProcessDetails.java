@@ -20,7 +20,7 @@ public class JobProcessDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "jobid")
-	private int jobid;
+	private Long jobid;
 
 	private int currentround;
 	private int marks;
@@ -32,14 +32,15 @@ public class JobProcessDetails {
 
 	@OneToOne
 	private User user;
+	
 	@ManyToOne
 	private JobApplication jobApplication;
 
-	public int getJobid() {
+	public Long getJobid() {
 		return jobid;
 	}
 
-	public void setJobid(int jobid) {
+	public void setJobid(Long jobid) {
 		this.jobid = jobid;
 	}
 

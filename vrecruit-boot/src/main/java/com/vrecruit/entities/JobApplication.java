@@ -14,7 +14,7 @@ public class JobApplication {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int jid;
+	private Long jid;
 	
 	
 	
@@ -33,11 +33,11 @@ public class JobApplication {
 	@ManyToOne
 	private Interviewer interviewer;
 
-	public int getJid() {
+	public Long getJid() {
 		return jid;
 	}
 
-	public void setJid(int jid) {
+	public void setJid(Long jid) {
 		this.jid = jid;
 	}
 
