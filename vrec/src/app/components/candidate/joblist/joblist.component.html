@@ -1,0 +1,30 @@
+<app-userpage></app-userpage>
+
+<p>joblist works!</p>
+<div class="container">
+  <div class="child">
+    <table >
+      <thead>
+        <tr>
+          <th>TITLE</th>
+          <th>CATEGORY</th>
+          <th>DESCRIPTION</th>
+          <th>POSITION TYPE</th>
+          <th>ROUNDS</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let el of jobapp">
+          <td>{{el.title}}</td>
+         <td>{{el.category}}</td>
+          <td>{{el.jobDescription}}</td>
+          <td>{{el.positionType}}</td>
+          <td>{{el.rounds}}</td>
+          <button type="submit" (click)='apply(el.jid)' class="btn btn-info">apply</button>
+ 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

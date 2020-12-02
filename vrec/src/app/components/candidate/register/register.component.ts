@@ -27,11 +27,12 @@ export class CandidateregisterComponent implements OnInit {
     this._service.registerUserFromRemote(this.user).subscribe(
       data =>{
         console.log("response received");
-        this.router.navigate(['/login'])
+        alert("User created successfully.");
+        this.router.navigate(['/candidate/login'])
       },
       error =>{
         console.log("exception occured");
-        this.msg=error.error;
+        this.msg="user exits!!enter valid id";
       }
     )
   }

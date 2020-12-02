@@ -9,6 +9,12 @@ import { CreateJobApplicationComponent } from "./components/interviewer/create-j
 import { ViewSingleJobApplicationComponent } from "./components/interviewer/view-single-job-application/view-single-job-application.component";
 import { ViewAllJobApplicationComponent } from "./components/interviewer/view-all-job-application/view-all-job-application.component";
 import { EditJobAppComponent } from "./components/interviewer/edit-job-app/edit-job-app.component";
+import { UserpageComponent } from "./components/candidate/userpage/userpage.component";
+import { ViewprofileComponent } from "./components/candidate/viewprofile/viewprofile.component";
+import { EditprofileComponent } from "./components/candidate/editprofile/editprofile.component";
+import { JoblistComponent } from "./components/candidate/joblist/joblist.component";
+import { UploadComponent } from "./components/candidate/upload/upload.component";
+import { StatusComponent } from "./components/candidate/status/status.component";
 
 const routes: Routes = [
   { path: "", component: DashboardComponent },
@@ -33,6 +39,14 @@ const routes: Routes = [
     path: "interviewer/jobApp/edit",
     component: EditJobAppComponent,
   },
+  { path: "userpage", component: UserpageComponent },
+  { path: "viewprofile", component: ViewprofileComponent },
+
+  { path: "editprofile", component: EditprofileComponent },
+  { path: "joblist", component: JoblistComponent },
+  { path: "upload", component: UploadComponent },
+
+  { path: "status", component: StatusComponent },
 ];
 
 @NgModule({
@@ -51,4 +65,10 @@ export const routingComponents = [
   InterviewerDashboardComponent,
   CreateJobApplicationComponent,
   EditJobAppComponent,
+  UserpageComponent,
+  ViewprofileComponent,
+  EditprofileComponent,
+  JoblistComponent,
+  UploadComponent,
+  StatusComponent,
 ];

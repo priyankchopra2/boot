@@ -5,7 +5,7 @@
       <small class="text-danger">{{msg}}</small>
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" class="form-control"  placeholder="Enter email" name="email" [(ngModel)]="user.emailId" required #email="ngModel"
+        <input type="email" class="form-control"  placeholder="Enter email" name="email" [(ngModel)]="user.email" required #email="ngModel"
         [class.is-invalid]="email.invalid && email.touched" >
         <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email Id is required field</small>
       </div>
@@ -16,9 +16,7 @@
         <small class="text-danger" [class.d-none]="password.valid || password.untouched">password is required field</small>
     
       </div>
-      <div class="checkbox">
-        <label><input type="checkbox" name="remember"> Remember me</label>
-      </div>
+      
       <button type="submit" class="btn btn-info">Login</button>
     </form>
      

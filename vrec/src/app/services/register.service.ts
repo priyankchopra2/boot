@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 
-import {Observable}from 'rxjs';
+import {BehaviorSubject, Observable}from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
 
@@ -9,15 +9,31 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class RegisterService {
-
- 
-  
+  private id= new  BehaviorSubject<number>(0);
+ getid=this.id.asObservable();
+ obj:any;
+//  id:number;
+ // id=new BehaviorSubject<"number">(0);
   constructor(private _http: HttpClient) { }
-  public loginUserFromRemote(user :User):Observable<any>{
-    return this._http.post<any>("http://localhost:8080/login",user)
+  public loginUserFromRemote(userobj :User):Observable<any>{
+   return this._http.post<any>("http://localhost:9999/candidate/login",userobj)
   }
+  public registerUserFromRemote(userobj :User):Observable<any>{
+    return this._http.post<any>("http://localhost:9999/candidate/registeruser",userobj)
+  }
+  public viewprofile(id:number):Observable<any>{
+  
+console.log("**************"+id);
 
-  public registerUserFromRemote(user :User):Observable<any>{
-    return this._http.post<any>("http://localhost:8080/registeruser",user)
+   return this._http.get<any>("http://localhost:9999/candidate/get/"+id);
+  
+  }
+  public update(user:User):Observable<any>{
+    return this._http.put<any>("http://localhost:9999/candidate/update",user)
+  }
+//  currentuser = this.messageSource.asObservable();
+  changeuser(id: number) {
+  this.id.next(id);
+  console.log(this.getid+"????");
   }
 }

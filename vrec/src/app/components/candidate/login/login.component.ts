@@ -18,14 +18,24 @@ export class CandidateloginComponent implements OnInit {
 
   ngOnInit(): void {
   }
- loginUser(){
+  loginUser(){
+    this._service.loginUserFromRemote(this.user).subscribe(
+      data => {
+   console.log("response received")
+   
+   this.user=data;
+  //var readData=JSON.parse(data);
+   this._service.changeuser(this.user.id);
+   console.log(this.user.id);
+ //  console.log(readData.id);
+  // this._service.setUserId(this.user.id);
+   this._router.navigate(['/userpage'])
+   },
+      error => {
+        console.log("exception occured");
+        this.msg="Bad credentials,please enter valid emailId and password";
+      }
+    )
+  }
  
-  
-   
-     this._router.navigate(['/userpage'])
-   
- }
- gotoregistration(){
-  this._router.navigate(['/registration'])
- }
 }
