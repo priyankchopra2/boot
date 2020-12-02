@@ -17,6 +17,11 @@ import { UsersidebarComponent } from './components/candidate/sidebar/sidebar.com
 import { CandidateloginComponent } from './components/candidate/login/login.component';
 import { CandidateregisterComponent } from './components/candidate/register/register.component';
 import { DashboardComponent } from './components/candidate/dashboard/dashboard.component';
+import { InterviewerDashboardComponent } from './components/interviewer/interviewer-dashboard/interviewer-dashboard.component';
+import { CreateJobApplicationComponent } from './components/interviewer/create-job-application/create-job-application.component';
+import { ViewSingleJobApplicationComponent } from './components/interviewer/view-single-job-application/view-single-job-application.component';
+import { ViewAllJobApplicationComponent } from './components/interviewer/view-all-job-application/view-all-job-application.component';
+import { EditJobAppComponent } from './components/interviewer/edit-job-app/edit-job-app.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +37,17 @@ import { DashboardComponent } from './components/candidate/dashboard/dashboard.c
     CandidateregisterComponent,
 
     DashboardComponent,
+
+    InterviewerDashboardComponent,
+
+    CreateJobApplicationComponent,
+
+    ViewSingleJobApplicationComponent,
+
+    ViewAllJobApplicationComponent,
+
+    EditJobAppComponent,
+
 
     
   ],

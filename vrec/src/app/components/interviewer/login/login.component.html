@@ -1,1 +1,45 @@
-<p>login works!</p>
+<app-header></app-header>
+
+<div class="container-fluid">
+  <h1>Interviewer Login</h1>
+
+  <form
+    action="/app/loginAction"
+    method="post"
+    class="form-group"
+    (ngSubmit)="onSubmit()"
+    
+  >
+    E-mail id
+    <input
+      class="form-control"
+      type="text"
+      [(ngModel)]="interviewer.email"
+      name="email"
+      minlength="5"
+      required
+    />
+
+    <br />
+    <br />
+    
+    Password
+    <input
+      class="form-control"
+      type="password"
+      name="password"
+      required
+      minlength="5"
+      [(ngModel)]="interviewer.password"
+    />
+    <br />
+    <br />
+
+    <input class="btn btn-primary" type="submit" value="Submit" />
+  </form>
+
+  <div>
+      {{interviewer.email}}
+    {{ msg }}
+  </div>
+</div>

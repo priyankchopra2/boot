@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vrecruit.entities.Interviewer;
 import com.vrecruit.entities.JobApplication;
 import com.vrecruit.entities.JobProcessDetails;
 import com.vrecruit.repository.InterviewerRepository;
@@ -24,6 +26,7 @@ import com.vrecruit.repository.JobProcessRepository;
 
 @RequestMapping("/jobApp")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class JobAppController {
 
 
@@ -39,9 +42,14 @@ public class JobAppController {
 	
 	//Create Job Application
 	@PostMapping("/create")
-	public ResponseEntity<?> create(@RequestBody JobApplication jobApp) throws URISyntaxException {
+	public ResponseEntity<?> create(@RequestBody JobApplication jobApp)  {
+		System.out.println("////////"+jobApp.toString());
+		Optional<Interviewer> intObj =  interviewerRepo.findById(jobApp.getInterviewer().getId()); 
+		System.out.println("*****"+intObj.toString());
+		jobApp.setInterviewer(intObj.get());
+		System.out.println("////////"+jobApp.toString());
 		JobApplication result = jobAppRepo.save(jobApp);
-        return ResponseEntity.created(new URI("/api/pooling" + result.getJid())).body(result); 
+        return ResponseEntity.ok().body(result); 
 	}
 	
 	//Fetching All Job Apps
@@ -82,11 +90,18 @@ public class JobAppController {
 	
 	}
 	
-	//Fetch By ID
+	//Fetch By interviewer ID 
 	@GetMapping("get/{id}")
+	public Collection<JobApplication> getByInterviewerId(@PathVariable Long id){
+		Optional<Interviewer> intObj =  interviewerRepo.findById(id); 
+		return jobAppRepo.findByInterviewer(intObj.get());
+	}
+	
+	//Fetch By interviewer ID 
+	@GetMapping("get/jid/{id}")
 	public Optional<JobApplication> getById(@PathVariable Long id){
 		return jobAppRepo.findById(id);
 	}
-	
+
 	
 }

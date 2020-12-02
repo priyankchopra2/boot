@@ -1,0 +1,60 @@
+<app-header></app-header>
+<div class="container-fluid center">
+  <h1>Job Applications</h1>
+
+  <table border="1" id="jobListTable">
+    <caption>
+      Job Applications List
+    </caption>
+    <div *ngIf="jobApps.length == 0">
+      <tr>
+        <td>No Job Applications Found</td>
+      </tr>
+    </div>
+    <div *ngFor="let jobapp of jobApps">
+      <br />
+
+      <tr>
+        <th id="head">Title: {{ jobapp.title }}</th>
+        <td>Category: {{ jobapp.category }}</td>
+        <td>Position Type: {{ jobapp.positionType }}</td>
+        <td>Job Description: {{ jobapp.jobDescription }}</td>
+        <td>Rounds: {{ jobapp.rounds }}</td>
+        <td>Interviewer: {{ jobapp.interviewer.name }}</td>
+        <div *ngIf="jobapp.interviewer.id == interviewerId">
+          <td>
+            <form>
+              <input
+                class="btn btn-primary"
+                type="submit"
+                value="Edit"
+                (click)="editJobApp(jobapp.jid)"
+              />
+            </form>
+          </td>
+          <td>
+            <form>
+              <input
+                class="btn btn-danger"
+                type="submit"
+                value="Delete"
+                (click)="deleteJobApp(jobapp.jid)"
+              />
+            </form>
+          </td>
+          <td>
+            <!-- It will give job id as requestparameter-->
+            <form action="viewCandidates" method="get">
+              <input type="hidden" name="id" value="${i.jid}" />
+              <input
+                class="btn btn-primary"
+                type="submit"
+                value="view Candidates"
+              />
+            </form>
+          </td>
+        </div>
+      </tr>
+    </div>
+  </table>
+</div>

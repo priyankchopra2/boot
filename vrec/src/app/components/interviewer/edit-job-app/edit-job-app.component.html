@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<h1>Create Job Application</h1>
+{{ jobApp | json }}
+<br />
+<form>
+  Title
+  <input type="text" name="title" [(ngModel)]="jobApp.title" />
+  Category
+  <select name="category" [(ngModel)]="jobApp.category">
+    <option selected="selected">select</option>
+    <option *ngFor="let item of categories | keyvalue" value="{{ item.value }}">
+      {{ item.value }}
+    </option>
+  </select>
+
+  <br />
+  Position Type
+  <select name="PositionType" [(ngModel)]="jobApp.positionType">
+    <option selected="selected">select</option>
+    <option
+      *ngFor="let item of PositionType | keyvalue"
+      value="{{ item.value }}"
+    >
+      {{ item.value }}
+    </option>
+  </select>
+  <br />
+  <br />
+  Job Description
+  <textarea
+    name="jobDescription"
+    [(ngModel)]="jobApp.jobDescription"
+  ></textarea>
+
+  <br />
+  <br />
+  Rounds
+  <input name="rounds" [(ngModel)]="jobApp.rounds" />
+  <br />
+  <br />
+  <input class="btn btn-primary" value="Submit" (click)="onSubmit()" />
+</form>
+
+<div class="success">
+  {{ msg }}
+</div>
+
+{{ jobApp | json }}

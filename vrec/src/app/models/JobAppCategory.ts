@@ -1,3 +1,6 @@
 export enum JobAppCategory {
-    HR, IT, FINANCE , ENGINEER
+  HR = "HR",
+  IT = "IT",
+  FINANCE = "FINANCE",
+  ENGINEER = "ENGINEER",
 }
