@@ -38,6 +38,8 @@ public class JobAppController {
 
 	@Autowired
 	InterviewerRepository interviewerRepo;
+	
+	
 
 	
 	//Create Job Application
@@ -78,7 +80,8 @@ public class JobAppController {
 	public Collection<JobProcessDetails> getCandidates(@PathVariable Long id){
 		
 		Optional<JobApplication> obj= jobAppRepo.findById(id);
-		
+		System.out.println("testing for candidate list" + obj);
+		System.out.println(jobProcessRepo.findByJobApplication(obj));
 		return jobProcessRepo.findByJobApplication(obj);
 	}
 	
@@ -90,6 +93,13 @@ public class JobAppController {
 	
 	}
 	
+	//editing job process of canidate
+		@PutMapping("/update/candidateProfile")
+	    public ResponseEntity<?> updatecandidateProfile(@RequestBody JobProcessDetails jobprocess){
+			JobProcessDetails  result = jobProcessRepo.save(jobprocess);
+	    	return ResponseEntity.ok().body(result);
+	    }
+	
 	//Fetch By interviewer ID 
 	@GetMapping("get/{id}")
 	public Collection<JobApplication> getByInterviewerId(@PathVariable Long id){
@@ -97,7 +107,7 @@ public class JobAppController {
 		return jobAppRepo.findByInterviewer(intObj.get());
 	}
 	
-	//Fetch By interviewer ID 
+	//Fetch By job ID 
 	@GetMapping("get/jid/{id}")
 	public Optional<JobApplication> getById(@PathVariable Long id){
 		return jobAppRepo.findById(id);

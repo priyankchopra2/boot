@@ -43,13 +43,13 @@
             </form>
           </td>
           <td>
-            <!-- It will give job id as requestparameter-->
-            <form action="viewCandidates" method="get">
-              <input type="hidden" name="id" value="${i.jid}" />
+            <!-- It will give job id as requestparameter interviewer/jobApp/view/candidates-->
+            <form>
               <input
-                class="btn btn-primary"
+                class="btn btn-danger"
                 type="submit"
-                value="view Candidates"
+                value="View Candidates"
+                (click)="viewCandiates(jobapp.jid)"
               />
             </form>
           </td>

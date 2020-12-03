@@ -1,0 +1,42 @@
+<app-header></app-header>
+
+<div class="container-fluid center">
+  <h1>Candidate List</h1>
+
+  <div style="margin-left: 100px">
+    <table border="1" class="tble">
+      <caption></caption>
+      <div *ngIf="candidateList.length == 0">
+        <tr>
+          <td>No candidates Found</td>
+        </tr>
+      </div>
+
+      <div *ngFor="let jp of candidateList">
+        <br />
+
+        <tr>
+          <th class="canlist">
+            <strong> username: {{ jp.user.username }} </strong>
+          </th>
+          <td>marks: {{ jp.marks }}</td>
+          <!-- <td>resume: {{ jp.resume }}</td> -->
+
+          <td>selected: {{ jp.selected }}</td>
+          <td>currentround: {{ jp.currentround }}</td>
+
+          <td>
+            <form>
+              <input
+                class="btn btn-primary"
+                type="submit"
+                value="Edit"
+                (click)="viewCandidateProfile(jp.jobid)"
+              />
+            </form>
+          </td>
+        </tr>
+      </div>
+    </table>
+  </div>
+</div>

@@ -68,4 +68,9 @@ export class ViewSingleJobApplicationComponent implements OnInit {
       }
     );
   }
+
+  viewCandiates(id) {
+    this.service.setCandidateListJobId(id);
+    this.router.navigate(["/interviewer/jobApp/view/candidates"]);
+  }
 }

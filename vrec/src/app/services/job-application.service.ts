@@ -1,11 +1,15 @@
 import { Injectable } from "@angular/core";
 import { JobApplication } from "../models/JobApplication";
 import { HttpClient } from "@angular/common/http";
+import { Jobprocess } from "../models/jobprocess";
 @Injectable({
   providedIn: "root",
 })
 export class JobApplicationService {
   private editJobId;
+  private candidateListJobId;
+  private CandidateJobProcessId;
+  private candidateListUpdate;
   constructor(private http: HttpClient) {}
 
   public createJobApp(jobApp: JobApplication) {
@@ -45,5 +49,37 @@ export class JobApplicationService {
     console.log("deleting...");
     const url = "http://localhost:8080/jobApp/delete/" + id;
     return this.http.delete(url, { responseType: "text" as "json" });
+  }
+
+  public setCandidateListJobId(id) {
+    this.candidateListJobId = id;
+    console.log("From job app service id is :" + this.candidateListJobId);
+  }
+
+  public getJobAppCandidateList() {
+    const url =
+      "http://localhost:8080/jobApp/candidates/" + this.candidateListJobId;
+    return this.http.get(url, { responseType: "text" as "json" });
+  }
+
+  public setCandidateJobProcessId(id) {
+    this.CandidateJobProcessId = id;
+    console.log("From job app service id is :" + this.CandidateJobProcessId);
+  }
+
+  public getCandidateProfile() {
+    const url =
+      "http://localhost:8080/jobApp//getCandidate/" +
+      this.CandidateJobProcessId;
+    return this.http.get(url, { responseType: "text" as "json" });
+  }
+
+  public updateCandidateProfile(jobProcess: Jobprocess) {
+    const url = "http://localhost:8080/jobApp/update/candidateProfile";
+
+    this.candidateListUpdate = true;
+    return this.http.put(url, jobProcess, {
+      responseType: "text" as "json",
+    });
   }
 }

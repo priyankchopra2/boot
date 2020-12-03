@@ -35,7 +35,8 @@ export class CreateJobApplicationComponent implements OnInit {
 
     response.subscribe(
       (data) => {
-        this.msg = "Object has been created successfully" + data;
+        this.msg = "Job Application has been created successfully ";
+
         var realData = JSON.parse(data);
         console.log(data);
         console.log(realData);

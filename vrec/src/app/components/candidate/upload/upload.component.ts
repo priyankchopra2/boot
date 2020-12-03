@@ -22,6 +22,7 @@ export class UploadComponent implements OnInit {
   // resume:File;
   jobid: number;
   id: number;
+  file;
 
   jobprocess = new Jobprocess();
   ngOnInit(): void {
@@ -61,17 +62,41 @@ export class UploadComponent implements OnInit {
   }
   apply() {
     console.log("********************************");
+    console.log(document.getElementById("input").files[0]);
+    // this.file = document.getElementById("input").files[0].__proto__;
+
+    var formData = new FormData();
+    // formData.append("file", document.getElementById("input").files[0]);
+
+    // formData.append(
+    //   "properties",
+    //   new Blob(
+    //     [
+    //       JSON.stringify({
+    //         name: "root",
+    //         password: "root",
+    //       }),
+    //     ],
+    //     {
+    //       type: "application/json",
+    //     }
+    //   )
+    // );
+
+    // this.jobprocess.resume = document.getElementById(
+    //   "input"
+    // ).files[0].__proto__;
 
     // this.jobprocess.resume=this.resume;
-    this.jservice.upload(this.jobprocess).subscribe(
+    let res = this.jservice.upload(this.jobprocess, formData);
+    res.subscribe(
       (data) => {
-        console.log("success");
-
-        // do something, if upload success
+        console.log("response received" + data);
       },
       (error) => {
-        console.log(error);
+        console.log("exception occured" + console.error());
       }
     );
+    
   }
 }

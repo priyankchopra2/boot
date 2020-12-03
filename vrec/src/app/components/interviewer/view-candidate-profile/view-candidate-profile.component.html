@@ -1,0 +1,63 @@
+<app-header></app-header>
+
+<div class="container-fluid center">
+  <h1>Candidate Report</h1>
+  <br />
+
+  <form>
+    Name: <strong>{{ candidateDetails.user.username }}</strong>
+
+    <br />
+    <br />
+
+    Marks:
+    <input
+      type="number"
+      name="marks"
+      [(ngModel)]="candidateDetails.marks"
+      max="100"
+    />
+    <br />
+    <br />
+    <!-- 
+    click to download Resume:
+    <a href="##/app/jobApp/download/${candidateDetails.jobid}">
+      {{ candidateDetails.resume }}
+    </a> -->
+    <br />
+    <br />
+
+    Selected:
+
+    <input
+      type="checkbox"
+      name="selected"
+      [(ngModel)]="candidateDetails.selected"
+    />
+    <br />
+    <br />
+    Current Round of candidate
+    <input
+      type="number"
+      path="currentround"
+      name="currentRound"
+      [(ngModel)]="candidateDetails.currentround"
+      max="{{ candidateDetails.jobApplication.rounds }}"
+    />
+    <br />
+    <br />
+
+    <strong> Total rounds: {{ candidateDetails.jobApplication.rounds }}</strong>
+
+    <br />
+    <br />
+    <input
+      class="btn btn-primary"
+      type="submit"
+      value="Update Profile"
+      (click)="updateCandidateProfile()"
+    />
+  </form>
+
+  <div class="success">{{ msg }}</div>
+</div>

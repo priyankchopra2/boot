@@ -27,6 +27,8 @@ import { JoblistComponent } from "./components/candidate/joblist/joblist.compone
 import { ViewprofileComponent } from "./components/candidate/viewprofile/viewprofile.component";
 import { EditprofileComponent } from "./components/candidate/editprofile/editprofile.component";
 import { StatusComponent } from "./components/candidate/status/status.component";
+import { ViewCandidatesComponent } from './components/interviewer/view-candidates/view-candidates.component';
+import { ViewCandidateProfileComponent } from './components/interviewer/view-candidate-profile/view-candidate-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +64,10 @@ import { StatusComponent } from "./components/candidate/status/status.component"
     JoblistComponent,
 
     StatusComponent,
+
+    ViewCandidatesComponent,
+
+    ViewCandidateProfileComponent,
   ],
   imports: [
     BrowserModule,

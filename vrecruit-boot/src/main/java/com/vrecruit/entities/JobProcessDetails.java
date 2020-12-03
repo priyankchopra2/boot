@@ -27,7 +27,7 @@ public class JobProcessDetails {
 	private boolean selected;
 	
 	
-	private CommonsMultipartFile resume;
+//	private CommonsMultipartFile resume;
 	
 
 	@OneToOne
@@ -82,14 +82,14 @@ public class JobProcessDetails {
 	public int getCurrentround() {
 		return currentround;
 	}
-
-	public CommonsMultipartFile getResume() {
-		return resume;
-	}
-
-	public void setResume(CommonsMultipartFile resume) {
-		this.resume = resume;
-	}
+//
+//	public CommonsMultipartFile getResume() {
+//		return resume;
+//	}
+//
+//	public void setResume(CommonsMultipartFile resume) {
+//		this.resume = resume;
+//	}
 
 	public void setCurrentround(int currentround) {
 		this.currentround = currentround;
@@ -102,7 +102,7 @@ public class JobProcessDetails {
 	@Override
 	public String toString() {
 		return "JobProcessDetails [jobid=" + jobid + ", currentround=" + currentround + ", marks=" + marks
-				+ ", selected=" + selected + ", resume=" + resume + ", user=" + user
+				+ ", selected=" + selected + ", resume=" + ", user=" + user
 				+ ", jobApplication=" + jobApplication + "]";
 	}
 

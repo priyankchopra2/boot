@@ -7,9 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.vrecruit.entities.JobApplication;
 import com.vrecruit.entities.JobProcessDetails;
@@ -55,9 +59,19 @@ public class JobProcessController {
 	}
 
 	// ***********************
-	@PostMapping("/applyjob/{id}")
-	public User applyforjob(@PathVariable Long id) {
-
-		return null;
+	@RequestMapping(value = "/applyjob", method = RequestMethod.POST)
+	public JobProcessDetails applyforjob( @RequestBody JobProcessDetails jobprocess)
+	{
+//		JobProcessDetails jobprocess=new JobProcessDetails();
+//		System.out.println(properties);
+//		System.out.println(file);
+//		
+//		CommonsMultipartFile upfile = (CommonsMultipartFile)  file;
+//		jobprocess.setResume(upfile);
+		
+		//have to find objects for job id and user id
+		System.out.println(jobprocess);
+		JobProcessDetails job=jobprocessrepo.save(jobprocess);
+		return job;
 	}
 }
