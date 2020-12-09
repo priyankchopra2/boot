@@ -84,3 +84,5 @@ export const routingComponents = [
   ViewCandidatesComponent,
   ViewCandidateProfileComponent,
 ];
+
+

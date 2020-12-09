@@ -1,21 +1,21 @@
 <p>upload works!</p>
 <app-userpage></app-userpage>
 <div class="container">
-  <div class="child">
-    <form name="uploadForm" (ngSubmit)="apply()">
-      <div class="form-group">
-        <label for="resume">upload your resume</label>
-        <br />
-        <input
-          type="file"
-          class="form-control"
-          id="input"
-          name="resume"
-          required
-        />
-      </div>
-
-      <button type="submit" class="btn btn-info">apply</button>
+    <div class="child">
+        <form  (ngSubmit)="apply()">
+   
+        <div class="form-group">
+            <label for="resume">Write about yourself!!</label>
+            <br>
+            <textarea
+            name="jobDescription"
+            [(ngModel)]="jobprocess.resume"
+          ></textarea>
+            </div>
+        <button type="submit" class="btn btn-info">apply</button>
     </form>
-  </div>
+ <!--   {{jobprocess|json}}-->
 </div>
+</div>  
+
+

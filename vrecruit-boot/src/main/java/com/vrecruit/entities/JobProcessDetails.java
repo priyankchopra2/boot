@@ -2,6 +2,7 @@ package com.vrecruit.entities;
 
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 @Entity
 @Table(name = "jobprocess")
@@ -26,14 +29,14 @@ public class JobProcessDetails {
 	private int marks;
 	private boolean selected;
 	
-	
-//	private CommonsMultipartFile resume;
+	   
+	private String resume;
 	
 
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL )
 	private User user;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL )
 	private JobApplication jobApplication;
 
 	public Long getJobid() {
@@ -82,14 +85,14 @@ public class JobProcessDetails {
 	public int getCurrentround() {
 		return currentround;
 	}
-//
-//	public CommonsMultipartFile getResume() {
-//		return resume;
-//	}
-//
-//	public void setResume(CommonsMultipartFile resume) {
-//		this.resume = resume;
-//	}
+
+	public String getResume() {
+		return resume;
+	}
+
+	public void setResume(String resume) {
+		this.resume = resume;
+	}
 
 	public void setCurrentround(int currentround) {
 		this.currentround = currentround;
@@ -102,7 +105,7 @@ public class JobProcessDetails {
 	@Override
 	public String toString() {
 		return "JobProcessDetails [jobid=" + jobid + ", currentround=" + currentround + ", marks=" + marks
-				+ ", selected=" + selected + ", resume=" + ", user=" + user
+				+ ", selected=" + selected +  ", user=" + user
 				+ ", jobApplication=" + jobApplication + "]";
 	}
 

@@ -15,6 +15,8 @@ public interface JobProcessRepository extends JpaRepository<JobProcessDetails, L
 
 	public Collection<JobProcessDetails> findByJobApplication(Optional<JobApplication> obj);
 
-	public Optional<JobProcessDetails> findByUser(Optional<User> user);
+	public Optional<JobProcessDetails> findByUser(Optional<User> userobj);
+
+	public Optional<JobProcessDetails> findByJobid(long id);
 
 }

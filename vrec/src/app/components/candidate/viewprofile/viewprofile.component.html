@@ -2,18 +2,23 @@
 <app-userpage></app-userpage>
 <div class="container">
     <div class="child">
-<table black white-text>
-<tr>    <label for="username">Username</label>
-    {{user.username}}
-</tr>
-   
-<tr>    <label for="email">Email</label>
-    {{user.email}}
-</tr>
 
-<tr>    <label for="Phone">Phone</label>
-    {{user.phone}}
-</tr> 
-</table>
+<table class="table table-striped">
+   <thead></thead>
+    <tbody>
+      <tr >
+        <td>Username</td>
+        <td> {{user.username}}</td>
+         </tr>
+      <tr >
+        <td>Email</td>
+        <td>{{user.email}}</td>
+        </tr>
+      <tr >
+        <td>Phone</td>
+        <td>{{user.phone}}</td>
+       </tr>
+    </tbody>
+  </table>
 </div>
 </div>

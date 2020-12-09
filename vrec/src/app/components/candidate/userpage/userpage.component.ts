@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { JobprocessService } from '../../../services/jobprocess.service';
 @Component({
   selector: 'app-userpage',
   templateUrl: './userpage.component.html',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserpageComponent implements OnInit {
 
-  constructor() { }
-
+   msg:String='';
+   constructor(private jservice:JobprocessService
+  ) { }
   ngOnInit(): void {
+    this.jservice.getmsg.subscribe((data:String)=>{
+      this.msg=data;
+    }); //<= Always get current value!
+
   }
 
 }

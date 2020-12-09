@@ -10,6 +10,8 @@ import com.vrecruit.entities.Interviewer;
 import com.vrecruit.entities.JobApplication;
 
 @Repository
-public interface JobApplicationRepository extends JpaRepository<JobApplication,Long>{
-	 public Collection<JobApplication> findByInterviewer(Interviewer obj);
+public interface JobApplicationRepository extends JpaRepository<JobApplication, Long> {
+	public Collection<JobApplication> findByInterviewer(Interviewer obj);
+
+	public JobApplication findByJid(Long jid);
 }

@@ -4,6 +4,7 @@ import{NgForm}from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../../../models/user';
 import { RegisterService } from '../../../services/register.service';
+import { JobprocessService } from '../../../services/jobprocess.service';
 
 @Component({
   selector: 'app-editprofile',
@@ -15,10 +16,15 @@ export class EditprofileComponent implements OnInit {
   msg='';
   id:number;
   constructor(  private _service : RegisterService,
-    private router: Router,
+    private router: Router,private jservice:JobprocessService
   ) { }
   user=new User();
   ngOnInit(): void {
+    
+    this.jservice.setmsg("");
+
+
+
     this._service.getid.subscribe((data:number)=>{
       this.id=data;
     }); //<= Always get current value!

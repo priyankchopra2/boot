@@ -3,6 +3,7 @@ import { User } from '../../../models/user';
 import { RegisterService } from '../../../services/register.service';
 import { Router } from '@angular/router';
 import {MatTableModule} from '@angular/material/table'
+import { JobprocessService } from '../../../services/jobprocess.service';
 
 @Component({
   selector: 'app-viewprofile',
@@ -12,9 +13,11 @@ import {MatTableModule} from '@angular/material/table'
 export class ViewprofileComponent implements OnInit {
 
   id:number;
-  constructor(private _service : RegisterService,private _router :Router) { }
+  constructor(private _service : RegisterService,private _router :Router,private jservice:JobprocessService) { }
 user=new User();
   ngOnInit(): void {
+    this.jservice.setmsg("your profile");
+
     this._service.getid.subscribe((data:number)=>{
       this.id=data;
     }); //<= Always get current value!

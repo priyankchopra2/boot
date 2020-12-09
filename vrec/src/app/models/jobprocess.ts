@@ -8,7 +8,7 @@ export class Jobprocess {
   marks: number;
   selected: boolean;
   user = new User();
-  // resume: File;
+ resume:String;
   jobApplication = new JobApplication();
   constructor() {}
   //	private CommonsMultipartFile resume;

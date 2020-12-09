@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Jobprocess } from "../models/jobprocess";
 
 @Injectable({
@@ -15,6 +15,9 @@ export class JobprocessService {
   private jobid = new BehaviorSubject<number>(0);
   getjobid = this.jobid.asObservable();
 
+  private msg = new BehaviorSubject<String>("");
+  getmsg = this.msg.asObservable();
+
   public checkjoblist(id: number): Observable<any> {
     return this._http.get<any>(
       "http://localhost:8080/jobprocess/joblist/" + id
@@ -22,29 +25,24 @@ export class JobprocessService {
   }
 
   public getjobapplication(jobid: number): Observable<any> {
-    return this._http.get<any>("http://localhost:8080/jobApp/get/" + jobid);
+    return this._http.get<any>("http://localhost:8080/jobApp/get/jid/" + jobid);
+  }
+  public getjobapplicationn(jobid: number) {
+    return this._http.get("http://localhost:8080/jobApp/get/" + jobid);
   }
 
-  public upload(jobprocess: Jobprocess, formData: FormData) {
-    var req = {
-      url: "http://localhost:8080/jobprocess/applyjob",
-      method: "POST",
-      headers: { "Content-Type": undefined },
-      data: jobprocess,
-      formData,
-      transformRequest: function (data, headersGetterFunction) {
-        return data;
-      },
-    };
-
-    return this._http.post(
+  public upload(jobprocess: Jobprocess): Observable<any> {
+    return this._http.post<any>(
       "http://localhost:8080/jobprocess/applyjob",
-
       jobprocess
     );
   }
 
-  public changejobapply(jobid: number) {
+  public jobstatus(id: number): Observable<any> {
+    return this._http.get<any>("http://localhost:8080/jobprocess/status/" + id);
+  }
+
+  changejobapply(jobid: number) {
     this.jobid.next(jobid);
     console.log(this.getjobid + "????");
   }
@@ -52,5 +50,9 @@ export class JobprocessService {
   changejobprocess(jid: number) {
     this.jid.next(jid);
     console.log(this.getjid + "????");
+  }
+  setmsg(msg: String) {
+    this.msg.next(msg);
+    console.log(this.getmsg + "????");
   }
 }
